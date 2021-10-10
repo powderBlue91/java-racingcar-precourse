@@ -10,7 +10,7 @@ import static org.junit.jupiter.api.Assertions.*;
 public class CarTest {
 
     @Test
-    @DisplayName("자동차는 만들어질때 각자의 이름을 갖는다. 이름이 5가 넘어가면 예외 발생")
+    @DisplayName("자동차는 만들어질때 각자의 이름을 갖는다. 이름이 1~5가 아니면 예외 발생")
     public void CarConstruct() {
 
         assertDoesNotThrow(() -> {
@@ -19,6 +19,10 @@ public class CarTest {
 
         assertDoesNotThrow(() -> {
             new Car("hi");
+        });
+
+        assertThrows(IllegalArgumentException.class, () -> {
+            new Car("");
         });
 
         assertThrows(IllegalArgumentException.class, () -> {
@@ -42,5 +46,11 @@ public class CarTest {
 
         car.moveDistance(4);
         Assertions.assertThat(car.getMoveDistance()).isEqualTo(10);
+    }
+
+    @Test
+    @DisplayName("가장 멀리간 자동차를 구하는 테스트")
+    public void FindFarthestCar() {
+
     }
 }
