@@ -21,4 +21,8 @@ public class Name {
     public int getLength() {
         return value.length();
     }
+
+    public Name getName() {
+        return this;
+    }
 }
