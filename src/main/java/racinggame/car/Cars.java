@@ -39,7 +39,7 @@ public class Cars {
         List<String> tmpList = new ArrayList<>();
         for (Car car : list) {
             if (car.getDistance() == maxDistance)
-                tmpList.add(car.getName().value);
+                tmpList.add(car.getName());
         }
 
         return tmpList.toArray(new String[tmpList.size()]);

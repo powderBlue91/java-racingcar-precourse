@@ -17,7 +17,7 @@ public class Car {
         distance.addValue();
     }
 
-    public Name getName() {
+    public String getName() {
         return name.getName();
     }
 }
