@@ -7,8 +7,16 @@ import java.util.List;
 public class Cars {
     List<Car> list = new ArrayList<>();
 
-    public void add(Car car) {
-        list.add(car);
+    public void addCars(String[] cars) {
+        for (int i = 0; i < cars.length; ++i) {
+            list.add(new Car(cars[i]));
+        }
+    }
+
+    public Car getCar(int idx) {
+        if (idx > list.size() - 1)
+            return null;
+        return list.get(idx);
     }
 
     public int getCarNum() {
