@@ -22,16 +22,15 @@ public class InputUtilTest {
     @Test
     @DisplayName("시도할 입력 횟수가 1이상인지 검증")
     public void InputUtilTest2() {
-        Assertions.assertThat(InputUtil.checkRounds(10)).isTrue();
+        assertDoesNotThrow(() -> {
+            InputUtil.checkRounds(10);
+        });
+
     }
 
     @Test
     @DisplayName("시도할 입력 횟수가 0이거나 음수일 경우는 예외처리")
     public void InputUtilTest3() {
-        assertDoesNotThrow(() -> {
-            InputUtil.checkRounds(5);
-        });
-
         assertThrows(IllegalArgumentException.class, () -> {
             InputUtil.checkRounds(-1);
         });
