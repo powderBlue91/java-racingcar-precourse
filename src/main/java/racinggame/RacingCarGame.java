@@ -14,11 +14,15 @@ public class RacingCarGame {
 
     public RacingCarGame() {
         carList = new Cars();
+        rounds = 0;
     }
 
     public void start() {
         initGameData();
-        result();
+
+        showProcess();
+
+        showWinner();
     }
 
     private void initGameData() {
@@ -35,50 +39,57 @@ public class RacingCarGame {
         }
     }
 
-    public void inputGameData() {
+    private void inputGameData() {
         carList.addCars(InputUtil.inputCarsName());
         rounds = InputUtil.inputRound();
     }
 
-    public void result() {
+    private void showProcess() {
         System.out.println("실행결과");
 
         for (int i = 0; i < rounds; ++i) {
             showRacingProcess();
             System.out.println();
         }
-
-        showWinner();
     }
 
-    public void showRacingProcess() {
+    private void showRacingProcess() {
         for (int i = 0; i < carList.getCarNum(); ++i) {
             System.out.print(carList.getCar(i).getName() + " : ");
             int distance = decideWhetherToGo(carList.getCar(i));
-            for (int j = 0; j < distance; ++j){
-                System.out.print("-");
-            }
-            System.out.println();
+            showCarDistance(distance);
         }
     }
 
-    public int decideWhetherToGo(Car car) {
+    private int decideWhetherToGo(Car car) {
         int num = Randoms.pickNumberInRange(0,9);
-        if (num >= 4)
+        if (num >= 4) {
             car.advance();
+        }
         return car.getDistance();
     }
 
+    private void showCarDistance(int distance) {
+        for (int j = 0; j < distance; ++j){
+            System.out.print("-");
+        }
+        System.out.println();
+    }
+
     private void showWinner() {
-        int num = carList.getFarthestDistanceCars().length;
+        int winnerNum = carList.getFarthestDistanceCars().length;
         String[] winners = carList.getFarthestDistanceCars();
         System.out.print("최종 우승자는 ");
-        for (int i = 0; i < num; ++i) {
+        for (int i = 0; i < winnerNum; ++i) {
             System.out.print(winners[i]);
-            if (i != num-1)
-                System.out.print(",");
+            renderSemicolon(i, winnerNum);
         }
         System.out.print(" 입니다.");
+    }
+
+    private void renderSemicolon(int i, int winnerNum) {
+        if (i != winnerNum - 1)
+            System.out.println(",");
     }
 
 }
