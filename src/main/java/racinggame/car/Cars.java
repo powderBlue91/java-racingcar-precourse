@@ -14,8 +14,9 @@ public class Cars {
     }
 
     public Car getCar(int idx) {
-        if (idx > list.size() - 1)
+        if (idx > list.size() - 1) {
             return null;
+        }
         return list.get(idx);
     }
 
