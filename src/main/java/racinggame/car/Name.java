@@ -14,7 +14,7 @@ public class Name {
 
     public Name(String value) {
         if (!validCarName(value))
-            throw new IllegalArgumentException();
+            throw new IllegalArgumentException("[ERROR] 자동차 이름 길이는 1~5 사이입니다");
         this.value = value;
     }
 

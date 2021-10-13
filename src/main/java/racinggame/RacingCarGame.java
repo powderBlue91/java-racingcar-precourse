@@ -4,9 +4,11 @@ import racinggame.input.InputUtil;
 
 public class RacingCarGame {
     RacingStadium racingStadium;
+    boolean isNextStep;
 
     public RacingCarGame() {
         racingStadium = new RacingStadium();
+        isNextStep = true;
     }
 
     public void start() {
@@ -20,16 +22,21 @@ public class RacingCarGame {
     }
 
     private void initGameData() {
-        while(true) {
-            try {
-                inputGameData();
-            } catch (IllegalArgumentException e) {
-                System.out.println("[ERROR]");
-                continue;
-            }
-
-            break;
+        while (isNextStep) {
+            input();
         }
+    }
+
+    public void input() {
+        try {
+            inputGameData();
+        } catch (IllegalArgumentException e) {
+            System.out.println(e.getMessage());
+            isNextStep = true;
+            return;
+        }
+
+        isNextStep = false;
     }
 
     private void inputGameData() {

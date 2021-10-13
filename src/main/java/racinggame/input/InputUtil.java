@@ -9,7 +9,7 @@ public class InputUtil {
 
     public static int checkRounds(int inputRounds) {
         if (inputRounds <= 0)
-            throw new IllegalArgumentException("[Error]");
+            throw new IllegalArgumentException("[ERROR] 시도 횟수는 최소 1이상입니다.");
         return inputRounds;
     }
 
