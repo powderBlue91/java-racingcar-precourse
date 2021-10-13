@@ -72,6 +72,10 @@ public class RacingStadium {
 
     public void renderSemicolon(int i, int winnerNum) {
         if (i != winnerNum - 1)
-            System.out.println(",");
+            System.out.print(",");
+    }
+
+    public void clear() {
+        carList.clear();
     }
 }

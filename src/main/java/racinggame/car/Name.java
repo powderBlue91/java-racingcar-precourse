@@ -7,14 +7,15 @@ public class Name {
     String value;
 
     public static boolean validCarName(String carName) {
-        if (carName.length() <= NAME_LENGTH_MAX && carName.length() >= NAME_LENGTH_MIN)
+        if ((carName != null) &&
+                (carName.length() <= NAME_LENGTH_MAX && carName.length() >= NAME_LENGTH_MIN))
             return true;
         return false;
     }
 
     public Name(String value) {
         if (!validCarName(value))
-            throw new IllegalArgumentException("[ERROR] 자동차 이름 길이는 1~5 사이입니다");
+            throw new IllegalArgumentException("[ERROR] 자동차 이름 길이는 1~5 또는 null이 아니어야합니다.");
         this.value = value;
     }
 

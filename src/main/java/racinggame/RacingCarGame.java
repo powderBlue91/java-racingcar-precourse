@@ -33,6 +33,7 @@ public class RacingCarGame {
         } catch (IllegalArgumentException e) {
             System.out.println(e.getMessage());
             isNextStep = true;
+            racingStadium.clear();
             return;
         }
 

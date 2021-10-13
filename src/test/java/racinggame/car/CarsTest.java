@@ -5,6 +5,9 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
+import static org.junit.jupiter.api.Assertions.assertDoesNotThrow;
+import static org.junit.jupiter.api.Assertions.assertThrows;
+
 public class CarsTest {
 
     Cars cars;
@@ -87,5 +90,20 @@ public class CarsTest {
         car3.advance();
 
         Assertions.assertThat(cars.getFarthestDistanceCars()).containsOnly("car2","car3");
+    }
+
+    @Test
+    @DisplayName("이름이 중복된 자동차가 있는 경우")
+    public void DuplicateNameTest() {
+        cars.addCars(new String[]{"car1"});
+
+        assertThrows(IllegalArgumentException.class, () -> {
+            cars.validationDuplicateCar("car1");
+        });
+
+        assertDoesNotThrow(() -> {
+            cars.validationDuplicateCar("car2");
+        });
+
     }
 }
